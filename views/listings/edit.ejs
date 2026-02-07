@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Listing · Wanderlust</title>
+    <link rel="icon" type="image/svg+xml" href="/svg/logo.svg" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-xl bg-white rounded-2xl shadow-lg p-8">
+      
+      <!-- Header -->
+      <h1 class="text-2xl font-semibold text-gray-900 mb-2">
+        Edit Listing
+      </h1>
+      <p class="text-sm text-gray-500 mb-6">
+        Update the details of your place below.
+      </p>
+
+      <!-- Form -->
+      <form
+        action="/listings/<%= listing.id %>?_method=PUT"
+        method="post"
+        class="space-y-4"
+      >
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          placeholder="Title"
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+        />
+
+        <textarea
+          name="listing[description]"
+          rows="4"
+          placeholder="Description"
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+        ><%= listing.description %></textarea>
+
+        <input
+          type="text"
+          name="listing[image.url]"
+          value="<%= listing.image.url %>"
+          placeholder="Image URL"
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+        />
+
+        <input
+          type="number"
+          name="listing[price]"
+          value="<%= listing.price %>"
+          placeholder="Price per night"
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+        />
+
+        <input
+          type="text"
+          name="listing[location]"
+          value="<%= listing.location %>"
+          placeholder="Location"
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+        />
+
+        <input
+          type="text"
+          name="listing[country]"
+          value="<%= listing.country %>"
+          placeholder="Country"
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+        />
+
+        <!-- Actions -->
+        <div class="flex gap-3 pt-4">
+          <button
+            type="submit"
+            class="flex-1 bg-rose-500 text-white py-2 rounded-lg font-medium hover:bg-rose-600 transition"
+          >
+            Update Listing
+          </button>
+
+          <a
+            href="/listings/<%= listing.id %>"
+            class="flex-1 text-center border border-gray-300 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+          >
+            Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

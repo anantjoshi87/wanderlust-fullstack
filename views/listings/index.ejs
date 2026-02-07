@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+    <% allListings.forEach(listing => { %>
+      <a href="/listings/<%= listing._id %>" class="block group">
+        <div class="group cursor-pointer">
+
+        <!-- Image -->
+        <div class="aspect-square overflow-hidden rounded-2xl">
+          <img
+            src="<%= listing.image.url %>"
+            alt="listing-image"
+            class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+
+        <!-- Text -->
+        <div class="mt-3 space-y-1">
+          <p class="font-semibold text-gray-900 line-clamp-1">
+            <%= listing.title %>
+          </p>
+
+          <p class="text-sm text-gray-500 line-clamp-2">
+            <%= listing.description %>
+          </p>
+
+          <% if (listing.price) { %>
+            <p class="font-semibold text-gray-900">
+              ₹<%= listing.price %>
+              <span class="font-normal text-gray-500">/ night</span>
+            </p>
+          <% } %>
+        </div>
+
+       </div>
+      </a>
+    <% }); %>
+
+  </div>
+</div>
