@@ -27,6 +27,12 @@ app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.engine("ejs", ejsMate);
 
+// app.use((req, res, next) => {
+//   req.time = new Date(Date.now());
+//   console.log(req.method, req.hostname, req.path, req.time);
+//   next();
+// });
+
 app.get("/", (req, res) => {
   res.redirect("/listings");
 });
@@ -70,6 +76,10 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
-app.listen("8080", (req, res) => {
+app.use((req, res, next) => {
+  res.status(404).render("error/404.ejs");
+});
+
+app.listen("8080", () => {
   console.log("Listening to post 8080");
 });

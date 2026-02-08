@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="max-w-7xl mx-auto px-6 py-8">
+<div class="max-w-6xl mx-auto px-6 py-8">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
     <% allListings.forEach(listing => { %>
@@ -12,7 +12,7 @@
           <img
             src="<%= listing.image.url %>"
             alt="listing-image"
-            class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+            class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300 pointer-events-none"
           />
         </div>
 
