@@ -16,6 +16,9 @@ yarn-error.log*
 dist/
 build/
 
+# Tailwind generated CSS (do not commit)
+public/css/style.css
+
 # IDE / Editor
 .vscode/
 .idea/
