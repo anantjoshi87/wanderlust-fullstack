@@ -1,22 +1,12 @@
-const mongoose = require("mongoose");
-const Listing = require("../models/listing.js");
-const initdata = require("./data.js");
+import Listing from "../src/models/listing.model.js";
+import initdata from "./data.js";
+import connectDB from "../src/db/db.js";
 
-main()
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
-}
+await connectDB();
 
 const initDB = async () => {
   await Listing.deleteMany({});
   await Listing.insertMany(initdata.data);
 };
 
-initDB();
+await initDB();
