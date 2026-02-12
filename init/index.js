@@ -1,4 +1,4 @@
-import Listing from "../src/models/listing.model.js";
+import Listing from "../src/models/note.model.js";
 import initdata from "./data.js";
 import connectDB from "../src/db/db.js";
 
